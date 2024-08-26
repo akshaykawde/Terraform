@@ -1,0 +1,23 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.16"
+    }
+  }
+
+  required_version = ">= 1.2.0"
+}
+provider "aws" {
+  region = "us-east-1"
+}
+
+================================
+resource "aws_s3_bucket" "bucket" {
+  bucket = "my-first-s3-bucket-unique1234"  # Ensure this name is globally unique
+
+  tags = {
+    Name        = "uniquebucket"
+    Environment = "dev"
+  }
+}
